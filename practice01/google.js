@@ -16,8 +16,8 @@ window.onload = function () {
     feelluckyButton.onclick = onFeelingLucky;
 
     var searchBox = document.getElementById('search_box');
-    searchBox.onkeypress = function() {
-        if(event.keyCode == 13) {
+    searchBox.onkeyup = function(e) {
+        if(e.code == 'Enter') {
             onSearch();
         }
     }
