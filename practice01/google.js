@@ -4,17 +4,21 @@ function onSearch() {
     let newTab = window.open(url, '_blank');
 }
 
-function onGmail() {
-    alert('Gmail');
-}
-
-function onImage() {
-    let newTab = window.open('https://www.google.com/imghp?hl=ko&tab=ri&ogbl', '_blank');
-}
-
 function onFeelingLucky() {
     alert('I am Feeling Lucky!');
 }
 
 window.onload = function () {
+    var searchButton = document.getElementById('search_button');
+    searchButton.onclick = onSearch;
+
+    var feelluckyButton = document.getElementById('feellucky_button');
+    feelluckyButton.onclick = onFeelingLucky;
+
+    var searchBox = document.getElementById('search_box');
+    searchBox.onkeypress = function() {
+        if(event.keyCode == 13) {
+            onSearch();
+        }
+    }
 }
