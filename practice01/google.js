@@ -9,6 +9,9 @@ function onFeelingLucky() {
 }
 
 window.onload = function () {
+    //////////////////////////////////////////////////////////////////
+    // javascript
+    /*
     var searchButton = document.getElementById('search_button');
     searchButton.onclick = onSearch;
 
@@ -21,4 +24,27 @@ window.onload = function () {
             onSearch();
         }
     }
+    */
+    //////////////////////////////////////////////////////////////////
+
+    //////////////////////////////////////////////////////////////////
+    // jquery
+    $('#search_button').click(onSearch);
+    $('#feellucky_button').click(onFeelingLucky);
+
+    var keyupbox = function(e) {
+        if(e.code == 'Enter') {
+            onSearch();
+        }
+    };
+
+    $('#search_box').keyup(keyupbox);
+    //////////////////////////////////////////////////////////////////
+
+    fetch('https://source.unsplash.com/272x92').then((res) => {
+        console.log(res.url);
+
+        var logoImg = document.getElementById('logo');
+        logoImg.src = res.url;
+    });
 }
