@@ -1,28 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from "react";
-import axios from "axios"
+import Todos from './components/Todos'
 
 function App() {
 
   const [name, setName] = useState("kys0522");
-  const [counter, setCounter] = useState(1);
-  const [todos, setTodos] = useState([]);
 
   useEffect(()=>{
     console.log('use effect')
     return ()=>{
       console.log('cleanup')
     }
-  }, [name, counter])
-
-  useEffect(()=>{
-    axios.get('https://dummyjson.com/todos?limit=' + counter)
-    .then(res =>  {
-      console.log(res.data.todos);
-      setTodos(res.data.todos);
-    });
-  }, [counter])
+  }, [name])
 
   return (
     <div className="App">
@@ -34,14 +24,11 @@ function App() {
         <p onClick={()=>setName("TGC")}>
           {name}
         </p>
-        <p onClick={()=>setCounter(counter + 1)}>
-          {counter}
-        </p>
-        <ul>
-          {
-            todos.map((todo)=><li>{todo.todo}</li>)
-          }
-        </ul>
+
+        {
+          // 새로 정의한 <Todos/> 컴포넌트를 사용합니다. 이 컴포넌트는 바디가 필요없어서 self-closing tag로 사용합니다.
+        }
+        <Todos/>
         <a
           className="App-link"
           href="https://reactjs.org"
