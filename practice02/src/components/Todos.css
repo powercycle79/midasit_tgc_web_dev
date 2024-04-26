@@ -1,3 +1,28 @@
-li {
-  border: 1px solid;
+.TodoListApp {
+  max-width: 500px;
+  padding: 20px;
+}
+
+.TodoButton {
+	display: inline-block;
+	width: 100px;
+	height: 30px;
+	font-size: 15px;
+	border-radius: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.Add {
+  background-color: rgb(87, 184, 87);
+}
+
+.Del {
+  background-color: orange;
+}
+
+.TodoList {
+  padding-left: 0px;
 }
