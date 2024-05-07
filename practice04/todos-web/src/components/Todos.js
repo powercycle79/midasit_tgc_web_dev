@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './Todos.css';
 import Todo from "./Todo";
-import {addTodo, delTodo, getTodos, updateTodo} from "../api/api";
+import {getTodos, addTodo, delTodo, updateTodo} from "../api/api";
 
 // 새로운 컴포넌트를 정의합니다.
 function Todos() {
@@ -35,14 +35,14 @@ function Todos() {
                     onChange={(e) => setNewContent(e.target.value)}
                     value={newContent}
                     className="NewTodoEdit"
-                ></input>
+                />
                 <button className = "TodoButton" onClick={onClickAdd}>추가</button>
                 <button className = "TodoButton" onClick={onClickDelete}>제거</button>
             </div>
             <div className="Todos">
                 <ul className="TodoList">
                     { // todos 배열을 순회하며 각각의 요소를 <li> 태그를 사용하여 출력합니다.
-                        todos.map((todo)=><Todo key={todo.id} todo={todo} setTodo={setTodo} />)
+                        todos.map((todo)=><Todo key={todo.id} todo={todo} setTodo={setTodo}/>)
                     }
                 </ul>
             </div>

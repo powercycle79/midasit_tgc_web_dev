@@ -6,7 +6,11 @@ function Todo({todo, setTodo}) {
     return (
         <li key={id} className={done ? "todoListItem done" : "todoListItem"}>
             <label>
-                <input type="checkbox" className="checkbox" checked={done} onClick={()=>setTodo({...todo, done:!done})} />
+                <input type="checkbox"
+                       className="checkbox"
+                       checked={done}
+                       onClick={()=>setTodo({...todo, done:!done})}
+                />
                 {content}
             </label>
         </li>
