@@ -1,15 +1,17 @@
 import './Todo.css';
 
-function Todo({todo}) {
-    const id = todo.id;
-    const todoDesc = todo.todo;
-    const completed = todo.completed;
+function Todo({todo, setTodo}) {
+    const {id, content, done} = todo;
 
     return (
-        <li key={id} className={completed ? "todoListItem done" : "todoListItem"}>
+        <li key={id} className={done ? "todoListItem done" : "todoListItem"}>
             <label>
-                <input type="checkbox" className="checkbox" checked={completed} />
-                {todoDesc}
+                <input type="checkbox"
+                       className="checkbox"
+                       checked={done}
+                       onClick={()=>setTodo({...todo, done:!done})}
+                />
+                {content}
             </label>
         </li>
     );
