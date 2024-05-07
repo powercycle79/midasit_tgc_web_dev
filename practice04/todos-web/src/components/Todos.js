@@ -15,7 +15,7 @@ function Todos() {
     const onClickDelete = () => {
         alert('onClickDelete');
     }
-    const updateTodo = (todo) =>{
+    const setTodo = (todo) =>{
         alert('setTodo');
     }
 
@@ -35,7 +35,7 @@ function Todos() {
             <div className="Todos">
                 <ul className="TodoList">
                     { // todos 배열을 순회하며 각각의 요소를 <li> 태그를 사용하여 출력합니다.
-                        todos.map((todo)=><Todo key={todo.id} todo={todo} setTodo={updateTodo}/>)
+                        todos.map((todo)=><Todo key={todo.id} todo={todo} setTodo={setTodo}/>)
                     }
                 </ul>
             </div>
