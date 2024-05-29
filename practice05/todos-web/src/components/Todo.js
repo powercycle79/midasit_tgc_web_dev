@@ -1,7 +1,11 @@
 import './Todo.css';
 
-function Todo({todo, setTodo}) {
+function Todo({todo, setTodo, deleteTodo}) {
     const {id, content, done} = todo;
+
+    const onClickDelete = () => {
+        deleteTodo(id);
+    }
 
     return (
         <li key={id} className={done ? "todoListItem done" : "todoListItem"}>
@@ -13,6 +17,7 @@ function Todo({todo, setTodo}) {
                 />
                 {content}
             </label>
+            <button className = "TodoButtonInside" onClick={onClickDelete}>제거</button>
         </li>
     );
 }

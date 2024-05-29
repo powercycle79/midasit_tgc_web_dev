@@ -17,8 +17,12 @@ function Todos() {
     const onClickDelete = () => {
         if(todos.length === 0) return;
 
-        delTodo(todos[todos.length - 1].id);
-        setTodos(todos.slice(0, todos.length - 1));
+        deleteTodo(todos[todos.length - 1].id);
+    }
+
+    const deleteTodo = (id) =>{
+        delTodo(id);
+        setTodos(todos.filter(todo=>todo.id !== id));
     }
 
     const setTodo = (todo)=> {
@@ -42,7 +46,11 @@ function Todos() {
             <div className="Todos">
                 <ul className="TodoList">
                     { // todos 배열을 순회하며 각각의 요소를 <li> 태그를 사용하여 출력합니다.
-                        todos.map((todo)=><Todo key={todo.id} todo={todo} setTodo={setTodo}/>)
+                        todos.map(todo=><Todo
+                            key={todo.id}
+                            todo={todo}
+                            setTodo={setTodo}
+                            deleteTodo={deleteTodo}/>)
                     }
                 </ul>
             </div>
