@@ -1,3 +1,4 @@
+use actix_cors::Cors;
 use actix_web::{web, App, HttpServer};
 use db::{conn::create_mysql_pool, AppState};
 use midasit_tgc_web_dev_todo::*;
@@ -14,6 +15,7 @@ async fn main() -> std::io::Result<()> {
             .app_data(app_state.clone())
             .configure(health_config)
             .configure(todo::config)
+            .wrap(Cors::permissive())
             .default_service(web::route().to(not_found))
     })
     .bind(("127.0.0.1", 8081))?
