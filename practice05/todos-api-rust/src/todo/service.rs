@@ -31,6 +31,7 @@ pub async fn get_todo(id: i32, data: web::Data<AppState>) -> Result<TodoQuery, T
     match todo {
         Ok(todo) => match todo {
             Some(todo) => Ok(TodoQuery {
+                id: 0,
                 content: todo.content.unwrap(),
                 done: todo.done.unwrap(),
             }),
@@ -48,6 +49,7 @@ pub async fn get_todos(data: web::Data<AppState>) -> Result<Vec<TodoQuery>, Todo
             let mut todo_queries = Vec::new();
             for todo in todos {
                 todo_queries.push(TodoQuery {
+                    id: 0,
                     content: todo.content.unwrap(),
                     done: todo.done.unwrap(),
                 });

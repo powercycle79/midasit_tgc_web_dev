@@ -13,10 +13,3 @@ services:
     environment:
       TZ: Asia/Seoul
     restart: always
-  tgc_frontend:
-    container_name: tgc_frontend
-    build:
-      context: ../todos-web
-    restart: always
-    ports:
-      - '80:3000'
