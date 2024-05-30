@@ -7,10 +7,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-public class EduSurvayApplication {
+public class TodoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(EduSurvayApplication.class, args);
+        SpringApplication.run(TodoApplication.class, args);
     }
     @Bean
     public PasswordEncoder getPasswordEncoder(){

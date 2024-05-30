@@ -9,7 +9,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 
-@Profile({"prod"})
 @Configuration
 @RequiredArgsConstructor
 public class DataSourceConfig {
@@ -24,11 +23,9 @@ public class DataSourceConfig {
     private DriverManagerDataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-         
         dataSource.setUrl(environment.getProperty("jdbc.mysql.datasource.url"));
         dataSource.setUsername(environment.getProperty("jdbc.mysql.datasource.username"));
         dataSource.setPassword(environment.getProperty("jdbc.mysql.datasource.password"));
-
         return dataSource;
     }
 }

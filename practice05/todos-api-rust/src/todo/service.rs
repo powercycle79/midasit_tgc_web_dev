@@ -18,8 +18,7 @@ pub enum TodoError {
 impl actix_web::ResponseError for TodoError {
     fn status_code(&self) -> StatusCode {
         match self {
-            TodoError::MysqlError(_) | 
-            TodoError::NotFound => StatusCode::NOT_FOUND, | 
+            TodoError::MysqlError(_) | TodoError::NotFound => StatusCode::NOT_FOUND,
             TodoError::Unknown => StatusCode::INTERNAL_SERVER_ERROR,
         }
     }
@@ -31,7 +30,7 @@ pub async fn get_todo(id: i32, data: web::Data<AppState>) -> Result<TodoQuery, T
     match todo {
         Ok(todo) => match todo {
             Some(todo) => Ok(TodoQuery {
-                id: 0,
+                id: todo.id,
                 content: todo.content.unwrap(),
                 done: todo.done.unwrap(),
             }),
@@ -49,7 +48,7 @@ pub async fn get_todos(data: web::Data<AppState>) -> Result<Vec<TodoQuery>, Todo
             let mut todo_queries = Vec::new();
             for todo in todos {
                 todo_queries.push(TodoQuery {
-                    id: 0,
+                    id: todo.id,
                     content: todo.content.unwrap(),
                     done: todo.done.unwrap(),
                 });

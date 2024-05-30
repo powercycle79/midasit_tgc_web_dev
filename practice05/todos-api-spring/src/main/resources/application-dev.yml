@@ -1,9 +1,13 @@
+spring:
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 jdbc:
-    h2:
-      datasource:
-        url: jdbc:h2:mem:edusurvay;INIT=CREATE SCHEMA IF NOT EXISTS EDUSURVAY;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;
-        username: sa
-        password:
-      console:
-        enabled: true
-        path: /h2-console
+  mysql:
+    datasource:
+      url: jdbc:mysql://localhost:5306/db
+      username: midasit
+      password: mid@sit
+  h2:
+    console:
+      enabled: false
