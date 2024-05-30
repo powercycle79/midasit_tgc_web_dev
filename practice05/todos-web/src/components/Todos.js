@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import './Todos.css';
 import Todo from "./Todo";
 import {getTodos, addTodo, delTodo, updateTodo} from "../api/api";
@@ -7,22 +7,24 @@ import {getTodos, addTodo, delTodo, updateTodo} from "../api/api";
 function Todos() {
 
     const [newContent, setNewContent] = useState('');
-    const [todos, setTodos] = useState(getTodos());
+    const [todos, setTodos] = useState([]);
+    const [update, setUpdate] = useState(true);
+
+    useEffect(() => {
+        getTodos()
+            .then(todos => {
+                setTodos(todos);
+            });
+    }, [update]);
 
     const onClickAdd = () => {
-        const newTodo = addTodo(newContent, false);
-        setTodos([...todos, newTodo]);
-
-    }
-    const onClickDelete = () => {
-        if(todos.length === 0) return;
-
-        deleteTodo(todos[todos.length - 1].id);
+        addTodo(newContent, false)
+            .then(todo => setUpdate(!update));
     }
 
     const deleteTodo = (id) =>{
-        delTodo(id);
-        setTodos(todos.filter(todo=>todo.id !== id));
+        delTodo(id)
+            .then(todo => setUpdate(!update));
     }
 
     const setTodo = (todo)=> {
@@ -41,7 +43,6 @@ function Todos() {
                     className="NewTodoEdit"
                 />
                 <button className = "TodoButton" onClick={onClickAdd}>추가</button>
-                <button className = "TodoButton" onClick={onClickDelete}>제거</button>
             </div>
             <div className="Todos">
                 <ul className="TodoList">

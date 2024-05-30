@@ -1,3 +1,5 @@
+import axios from "axios";
+
 let nextId = 4;
 let todos = [
     {
@@ -17,21 +19,38 @@ let todos = [
     },
 ];
 
-const getTodos = () => {
-    return todos;
+const getTodos = async () => {
+    return new Promise((resolve, reject) => {
+        axios.get('http://localhost:8081/todo')
+            .then(res => {
+                resolve(res.data);
+            }).catch(e => {
+            reject(e);
+        });
+    });
 }
 
-const addTodo = (content, done) => {
-    const newId= nextId;
-    nextId = nextId + 1;
 
-    const newTodo = {id: newId, content, done}
-    todos = [...todos, newTodo];
-    return newTodo;
+const addTodo = async (content, done) => {
+    return new Promise((resolve, reject) => {
+        axios.post('http://localhost:8081/todo', {content, done})
+            .then(res => {
+                resolve(res.data);
+            }).catch(e => {
+            reject(e);
+        });
+    });
 }
 
-const delTodo = (id) => {
-    todos = todos.filter(t=>t.id !== id);
+const delTodo = async (id) => {
+    return new Promise((resolve, reject) => {
+        axios.delete('http://localhost:8081/todo/' + id)
+            .then(res => {
+                resolve(res.data);
+            }).catch(e => {
+            reject(e);
+        });
+    });
 }
 
 const updateTodo = ({id, content, done}) =>{
