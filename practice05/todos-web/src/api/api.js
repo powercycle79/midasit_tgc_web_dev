@@ -53,8 +53,16 @@ const delTodo = async (id) => {
     });
 }
 
-const updateTodo = ({id, content, done}) =>{
-    todos = todos.map(t=>t.id === id ? {content, done}: t);
+const updateTodo = async ({id, content, done}) =>{
+    return new Promise((resolve, reject) => {
+        const intDone = done ? 1 : 0;
+        axios.put('http://localhost:8081/todo', {id, content, done: intDone})
+            .then(res => {
+                resolve(res.data);
+            }).catch(e => {
+            reject(e);
+        });
+    });
 }
 
 export {getTodos, addTodo, delTodo, updateTodo};
