@@ -10,6 +10,7 @@ class TodoCreate(BaseModel):
     done : bool
 
 class TodoUpdate(BaseModel):
+    id: int
     content: str
     done : bool
 

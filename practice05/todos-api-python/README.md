@@ -28,9 +28,9 @@ pip install sqlalchemy pymysql
 $ uvicorn main:app --reload --host 0.0.0.0
 $ uvicorn "$main위치":app --reload --host 0.0.0.0
 
-
 //example : main이 app 하위에 있을 경우
-$ uvicorn app.main:app --reload --host 0.0.0.0
+$ uvicorn app.main:app --reload --host 0.0.0.0 --port 8081
+$ python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8081
 
 ```
 
