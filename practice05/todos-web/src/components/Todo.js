@@ -1,7 +1,7 @@
 import './Todo.css';
-import bookmarkOff from './bookmark_off.png';
-import bookmarkOn from './bookmark_on.png';
-import bin from './bin.png';
+import bookmarkOff from './bookmark_off';
+import bookmarkOn from './bookmark_on';
+import bin from './bin';
 
 function Todo({todo, setTodo, deleteTodo}) {
     const {id, content, done, duedate, bookmark, memo} = todo;
